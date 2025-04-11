@@ -1,6 +1,6 @@
 import cv2
 import mediapipe as mp
-#import time
+import time
 
 cap = cv2.VideoCapture(1)
 mpHands = mp.solutions.hands
@@ -23,7 +23,7 @@ while True:
             for id, lm in enumerate(handLms.landmark):
                              
                 cx, cy = int(lm.x*w), int(lm.y*h)
-                if id == 8:
+                if id == 12:
                     if (cx > 300) and (cx < 400) and (cy > 100) and (cy < 200):
                         if press_count == 30:
                             cv2.rectangle(frame, (300,100), (400,200), (255, 255, 255), 3)

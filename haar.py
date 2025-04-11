@@ -4,7 +4,7 @@ import cv2
 plateCascade = cv2.CascadeClassifier('haarcascade_plate_number.xml')
 minArea = 500
 
-img = cv2.imread('im14.jpg')
+img = cv2.imread('variant-4.jpeg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 plates = plateCascade.detectMultiScale(gray, 1.1, 4)
