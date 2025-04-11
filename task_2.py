@@ -24,7 +24,10 @@ def video_processing():
 
         if last_box:
             x, y, w, h = last_box
-            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            if x > (frame.shape[1]) // 2:
+                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            else:
+                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)
 
         cv2.imshow('frame with box', frame)
         cv2.imshow('edges', edges)
