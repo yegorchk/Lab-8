@@ -26,11 +26,14 @@ def video_processing():
 
         if last_box:
             center_width, center_height = last_box
-            x1 = int(center_width - 32)
-            x2 = int(center_width + 32)
-            y1 = int(center_height - 32)
-            y2 = int(center_height + 32)
-            frame[y1:y2, x1:x2] = fly
+            x1 = max(center_width - 32, 0)
+            y1 = max(center_height - 32, 0)
+            x2 = x1 + 64
+            y2 = y1 + 64
+
+            # Проверка на выход за границы кадра
+            if y2 <= frame.shape[0] and x2 <= frame.shape[1]:
+                frame[y1:y2, x1:x2] = fly
 
         cv2.imshow('frame with box', frame)
         cv2.imshow('edges', edges)
@@ -44,4 +47,3 @@ def video_processing():
 
 if __name__ == '__main__':
     video_processing()
-    
